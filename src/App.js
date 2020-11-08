@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Header from './components/Header';
+import Contacts from './components/Contacts';
+import Footer from './components/Footer';
+import AddContact from './components/AddContact';
+import EditContact from './components/EditContact';
+
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import { makeStyles } from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  app: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+}));
+
+const App = () => {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <div className={classes.app}>
+          <Header />
+          <Switch>
+            <Route exact path="/" component={Contacts} />
+            <Route path="/contacts/add" component={AddContact} />
+            <Route path="/contact/edit/:id" component={EditContact} />
+          </Switch>
+
+          <Footer />
+        </div>
+      </Router>
+    </Provider>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 # React Redux Contact Book CRUD Application
 
-### [Live Site](https://contacts.azeemansari.me/)
+### [Live Demo](https://contacts.azeemansari.me/)
 
 ![React Advice PWA](https://i.ibb.co/1RGMKWb/contact-book.jpg)
 
